@@ -5,7 +5,7 @@ int main(int argc, char** argv){
     char data[50];
     strcpy(data, argv[1]);
 
-    printf("HEllo, i ran lol");
+    printf("Hello, i ran lol");
 
     return 0;
 }
