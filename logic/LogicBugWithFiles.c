@@ -15,7 +15,7 @@ int Validate(char* username, char* password){
     
     fscanf(passwordFile, "%s", validPassword);
     fclose(passwordFile);
-    printf("validPassword: %s\n", validPassword);
+    printf("The password is: %s\n", validPassword);
     return strcmp(password, validPassword) == 0;
 }
 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <windows.h>
 
 //this is an example of code that cause a infinity loop if you optimaze it
@@ -11,6 +12,7 @@
 DWORD WINAPI Func(void* ptr){
     sleep(1);
     *(int*)ptr = 0;
+    return 0;
 }
 
 int main(){

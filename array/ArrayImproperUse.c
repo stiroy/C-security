@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 char getLetter(char* word, int place){
     return word[place];
