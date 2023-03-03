@@ -7,6 +7,7 @@ int main(int argc, char** argv){
 
     printf("the input\n");
     printf("%s", data);
+    printf("\n");
 
     return 0;
 }
